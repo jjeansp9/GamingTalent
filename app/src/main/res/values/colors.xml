@@ -2,4 +2,20 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="font_color_333_999">#333</color>
+    <color name="font_color_444_888">#444</color>
+    <color name="font_color_555_777">#555</color>
+    <color name="font_color_666">#666</color>
+    <color name="font_color_777_555">#777</color>
+    <color name="font_color_888_444">#888</color>
+    <color name="font_color_999_333">#999</color>
+    <color name="font_color_default">#191919</color>
+
+    <color name="bnv_seletedColor">#002D41</color>
+    <color name="bnv_unSeletedColor">#A6A6A6</color>
+
+    <color name="tab_start_end">#5F8FC3</color>
+    <color name="tab_loading">#E44B4B</color>
+    <color name="tab_click">#60C858</color>
 </resources>

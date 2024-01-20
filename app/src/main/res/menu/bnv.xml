@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/talent_test"
+        android:title="거래소"
+        android:icon="@drawable/selector_home"/>
+
+    <item android:id="@+id/rank"
+        android:title="코인정보"
+        android:icon="@drawable/selector_info"/>
+
+    <item android:id="@+id/community"
+        android:title="투자내역"
+        android:icon="@drawable/selector_state"/>
+
+    <item android:id="@+id/setting"
+        android:title="내정보"
+        android:icon="@drawable/selector_account"/>
+</menu>
