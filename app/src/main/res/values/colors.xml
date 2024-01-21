@@ -20,4 +20,6 @@
     <color name="tab_start_end">#5F8FC3</color>
     <color name="tab_loading">#E44B4B</color>
     <color name="tab_click">#60C858</color>
+
+    <color name="transparent">#00FFFFFF</color>
 </resources>

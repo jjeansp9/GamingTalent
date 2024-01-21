@@ -86,10 +86,12 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
                 binding.rootSub.visibility = View.GONE
                 binding.root.visibility = View.VISIBLE
                 it.visibility = View.GONE
+                binding.imgBack.visibility = View.GONE
             }
         }
 
         binding.tvFinish.setOnClickListener { finish() }
+        binding.imgBack.setOnClickListener{ finish() }
     }
     private fun observe() {
 
@@ -119,10 +121,10 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
             binding.rootSub.visibility = View.VISIBLE
             binding.tvRestart.visibility = View.VISIBLE
             binding.tvFinish.visibility = View.VISIBLE
-            var average = 0L
+            binding.imgBack.visibility = View.VISIBLE
             var total = 0L
             for (i in 0 until 3) { total += score[i] }
-            average = total / 3
+            var average = total / 3
             binding.tvSub.text = "결과를 확인하세요\n\n${score[0]}\n${score[1]}\n${score[2]}\n\n당신의 평균기록은 ${average}ms 입니다"
 
         } else {

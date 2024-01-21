@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jspstudio.gamingtalent.R
 import com.jspstudio.gamingtalent.databinding.ListTalentItemBinding
 import com.jspstudio.gamingtalent.model.data.TalentData
+import com.jspstudio.gamingtalent.util.UtilAnim
 
 class TalentListAdapter(
     private val context: Context,
@@ -42,24 +43,24 @@ class TalentListAdapter(
         fun bind(item: TalentData, position: Int) {
             binding.item = item
 
-//            binding.coinRoot.setOnTouchListener {v, event ->
-//                when (event.action) {
-//                    MotionEvent.ACTION_DOWN -> {
-//                        v.setBackgroundColor(context.getColor(R.color.btn_press))
-//                        true
-//                    }
-//                    MotionEvent.ACTION_CANCEL -> {
-//                        v.setBackgroundColor(context.getColor(R.color.white))
-//                        true
-//                    }
-//                    MotionEvent.ACTION_UP -> {
-//                        v.setBackgroundColor(context.getColor(R.color.white))
-//                        if (binding.item != null) onItemClick(binding.item!!)
-//                        true
-//                    }
-//                    else -> false
-//                }
-//            }
+            binding.root.setOnTouchListener {v, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        UtilAnim.btnClickEffect(v, R.drawable.bg_corner_12, 75, 0.98f, 0.98f, true)
+                        true
+                    }
+                    MotionEvent.ACTION_CANCEL -> {
+                        UtilAnim.btnClickEffect(v, R.drawable.bg_corner_12, 100, 1f, 1f, false)
+                        true
+                    }
+                    MotionEvent.ACTION_UP -> {
+                        UtilAnim.btnClickEffect(v, R.drawable.bg_corner_12, 100, 1f, 1f, false)
+                        if (binding.item != null) onItemClick(binding.item!!)
+                        true
+                    }
+                    else -> false
+                }
+            }
 
 
             binding.executePendingBindings()
