@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/talent_test"
-        android:title="능력테스트"
+        android:title="테스트"
         android:icon="@drawable/selector_home"/>
 
     <item android:id="@+id/rank"

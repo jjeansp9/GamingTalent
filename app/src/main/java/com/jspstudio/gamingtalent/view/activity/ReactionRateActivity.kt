@@ -44,6 +44,7 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
                             failClick()
                             binding.root.visibility = View.GONE
                             binding.rootSub.visibility = View.VISIBLE
+                            binding.tvFinish.visibility = View.GONE
                         }
                     }
                 }
@@ -55,11 +56,12 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
             when(event?.action) {
                 MotionEvent.ACTION_UP -> {
                     if (!isStart) {
-                        if (stack == 0) {
+                        if (stack <= 2) {
                             isStart = true
                             countDown()
                             binding.rootSub.visibility = View.GONE
                             binding.root.visibility = View.VISIBLE
+                            binding.tvFinish.visibility = View.GONE
                         }
                     }
                 }
@@ -86,7 +88,6 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
                 binding.rootSub.visibility = View.GONE
                 binding.root.visibility = View.VISIBLE
                 it.visibility = View.GONE
-                binding.imgBack.visibility = View.GONE
             }
         }
 
