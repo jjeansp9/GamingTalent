@@ -1,11 +1,8 @@
 package com.jspstudio.gamingtalent.view.activity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.os.Handler
-import android.os.Looper
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
@@ -15,11 +12,8 @@ import com.jspstudio.gamingtalent.base.BaseActivity
 import com.jspstudio.gamingtalent.databinding.ActivityReactionRateBinding
 import com.jspstudio.gamingtalent.util.LogMgr
 import com.jspstudio.gamingtalent.viewmodel.ReactionRateViewModel
-import java.util.Locale
-import java.util.concurrent.TimeUnit
 
-class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.activity_reaction_rate),
-    View.OnTouchListener{
+class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.activity_reaction_rate){
 
     private val TAG = "ReactionRateActivity"
 
@@ -33,21 +27,69 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
     }
     @SuppressLint("ClickableViewAccessibility")
     private fun onClick() {
-        binding.root.setOnTouchListener(this)
-
-        binding.rootSub.setOnTouchListener(OnTouchListener { v, event ->
+        binding.root.setOnTouchListener(OnTouchListener { v, event ->
             when(event?.action) {
-                MotionEvent.ACTION_UP -> {
-                    if (!isStart) {
-                        isStart = true
-                        countDown()
-                        binding.rootSub.visibility = View.GONE
-                        binding.root.visibility = View.VISIBLE
+                MotionEvent.ACTION_DOWN -> {
+                    if (isStart) {
+                        if (canClick) {
+                            stack += 1
+                            binding.root.setBackgroundColor(this@ReactionRateActivity.getColor(R.color.tab_loading))
+                            countDown()
+
+                        } else {
+                            if (countDownTimer != null) {
+                                countDownTimer?.cancel()
+                                countDownTimer = null
+                            }
+                            failClick()
+                            binding.root.visibility = View.GONE
+                            binding.rootSub.visibility = View.VISIBLE
+                        }
                     }
                 }
             }
             return@OnTouchListener true
         })
+
+        binding.rootSub.setOnTouchListener(OnTouchListener { v, event ->
+            when(event?.action) {
+                MotionEvent.ACTION_UP -> {
+                    if (!isStart) {
+                        if (stack == 0) {
+                            isStart = true
+                            countDown()
+                            binding.rootSub.visibility = View.GONE
+                            binding.root.visibility = View.VISIBLE
+                        }
+                    }
+                }
+            }
+            return@OnTouchListener true
+        })
+
+        binding.tvRestart.setOnClickListener {
+            if (!isStart) {
+                if (countDownTimer != null) {
+                    countDownTimer?.cancel()
+                    countDownTimer = null
+                }
+                if (countUpTimer != null) {
+                    countUpTimer?.cancel()
+                    countUpTimer = null
+                }
+                stack = 0
+                score.clear()
+                binding.root.setBackgroundColor(this.getColor(R.color.tab_loading))
+                binding.tv.text = "초록을 기다리세요.."
+                isStart = true
+                countDown()
+                binding.rootSub.visibility = View.GONE
+                binding.root.visibility = View.VISIBLE
+                it.visibility = View.GONE
+            }
+        }
+
+        binding.tvFinish.setOnClickListener { finish() }
     }
     private fun observe() {
 
@@ -58,28 +100,6 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
     private var isFail = false
 
     private var stack = 0
-
-    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        when(event?.action) {
-            MotionEvent.ACTION_DOWN -> {
-                if (isStart) {
-                    if (canClick) {
-                        countDown()
-                        stack += 1
-                    } else {
-                        if (countDownTimer != null) {
-                            countDownTimer?.cancel()
-                            countDownTimer = null
-                        }
-                        failClick()
-                        binding.root.visibility = View.GONE
-                        binding.rootSub.visibility = View.VISIBLE
-                    }
-                }
-            }
-        }
-        return true
-    }
 
     private fun failClick() {
         isStart = false
@@ -93,45 +113,69 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
     private fun countDown() {
         canClick = false
 
-        binding.root.setBackgroundColor(this.getColor(R.color.tab_loading))
-        binding.tv.text = "초록을 기다리세요.."
+        if (stack >= 3) {
+            isStart = false
+            binding.root.visibility = View.GONE
+            binding.rootSub.visibility = View.VISIBLE
+            binding.tvRestart.visibility = View.VISIBLE
+            binding.tvFinish.visibility = View.VISIBLE
+            var average = 0L
+            var total = 0L
+            for (i in 0 until 3) { total += score[i] }
+            average = total / 3
+            binding.tvSub.text = "결과를 확인하세요\n\n${score[0]}\n${score[1]}\n${score[2]}\n\n당신의 평균기록은 ${average}ms 입니다"
 
-        val randomDelay = (1000..2000).random().toLong()
+        } else {
+            binding.root.setBackgroundColor(this.getColor(R.color.tab_loading))
+            binding.tv.text = "초록을 기다리세요.."
+        }
+
+        val randomDelay = (2000..3500).random().toLong()
         countDownTimer = object : CountDownTimer(randomDelay, 1) {
             override fun onTick(millisUntilFinished: Long) {
                 LogMgr.d(TAG, millisUntilFinished.toString())
             }
 
             override fun onFinish() {
-                binding.root.setBackgroundColor(this@ReactionRateActivity.getColor(R.color.tab_click))
                 countUp()
                 canClick = true
-                binding.tv.text = "클릭하세요"
             }
         }.start()
     }
 
     private var startTime = 0L // 시작 시간
-    private val maxTime = 2000L // 최대 시간 (예: 2초)
+
+    private var score = arrayListOf<Long>()
 
     private fun countUp() {
-        countUpTimer = object : CountDownTimer(Long.MAX_VALUE, 1) {
+        object : CountDownTimer(Long.MAX_VALUE, 1) {
             override fun onTick(millisUntilFinished: Long) {
                 val elapsedTime = System.currentTimeMillis() - startTime
-                if (elapsedTime >= maxTime) {
-                    onFinish()
-                    cancel()
-                } else {
-                    // 경과 시간 업데이트 (예: TextView에 표시)
-                    binding.tv.text = (elapsedTime).toString()
+//                if (!canClick) {
+//                    score.add(elapsedTime)
+//                }
+                when(stack) {
+                    0 -> {
+                        score.add(0, elapsedTime)
+                        onFinish()
+                    }
+                    1 -> {
+                        score.set(1, elapsedTime)
+                        onFinish()
+                    }
+                    2 -> {
+                        score.set(2, elapsedTime)
+                        onFinish()
+                    }
                 }
             }
 
             override fun onFinish() {
-                binding.root.setBackgroundColor(this@ReactionRateActivity.getColor(R.color.tab_click))
                 // 필요한 추가 로직
             }
         }.start()
+        binding.root.setBackgroundColor(this@ReactionRateActivity.getColor(R.color.tab_click))
+        binding.tv.text = "클릭하세요"
 
         // 타이머 시작
         startTime = System.currentTimeMillis()

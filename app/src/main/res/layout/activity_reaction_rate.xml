@@ -15,7 +15,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/root">
+            android:id="@+id/root"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv"
@@ -49,6 +50,50 @@
                 android:text="아무곳이나 눌러서 시작"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_26"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv_sub"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/tv_finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tv_sub"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="16dp"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="10dp"
+                    android:background="@drawable/bg_corner_8"
+                    android:backgroundTint="@color/blue"
+                    android:gravity="center"
+                    android:text="그만하기"
+                    android:textSize="@dimen/text_size_18"
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/tv_restart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="10dp"
+                    android:background="@drawable/bg_corner_8"
+                    android:backgroundTint="@color/blue"
+                    android:gravity="center"
+                    android:text="다시 시작"
+                    android:textSize="@dimen/text_size_18"
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

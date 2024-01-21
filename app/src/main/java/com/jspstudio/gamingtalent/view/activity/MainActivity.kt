@@ -21,7 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         setupBottomNavigationView()
     }
-    // todo test
+
     private fun setupBottomNavigationView() {
         binding.bnv.setOnItemSelectedListener { item ->
             when (item.itemId) {
