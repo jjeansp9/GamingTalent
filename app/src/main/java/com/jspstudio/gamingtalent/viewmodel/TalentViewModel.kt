@@ -1,10 +1,10 @@
 package com.jspstudio.gamingtalent.viewmodel
 
-import android.R
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.jspstudio.gamingtalent.base.BaseViewModel
 import com.jspstudio.gamingtalent.model.data.TalentData
+import com.jspstudio.gamingtalent.view.activity.ClickSpeedActivity
 import com.jspstudio.gamingtalent.view.activity.ReactionRateActivity
 
 
@@ -15,6 +15,7 @@ class TalentViewModel : BaseViewModel() {
     fun setList() {
         val data = arrayListOf<TalentData>()
         data.add(TalentData("반응속도 테스트", ReactionRateActivity::class.java))
+        data.add(TalentData("손가락 스피드 테스트", ClickSpeedActivity::class.java))
 //        mList.add(
 //            MainMenuItemData(
 //                DataManager.BOARD_TIME_TABLE,

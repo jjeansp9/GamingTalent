@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vmRate"
-            type="com.jspstudio.gamingtalent.viewmodel.ReactionRateViewModel" />
+            type="com.jspstudio.gamingtalent.viewmodel.GameViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vmTal"
+            type="com.jspstudio.gamingtalent.viewmodel.GameViewModel" />
+    </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.activity.ClickSpeedActivity"
+        android:background="@color/light_gray">
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:gravity="center"
+            android:text="50"
+            android:textColor="@color/font_color_default"
+            android:textSize="@dimen/text_size_18"
+            android:background="@drawable/bg_corner_circle" />
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:gravity="center"
+            android:text="50"
+            android:textColor="@color/font_color_default"
+            android:textSize="@dimen/text_size_18"
+            android:background="@drawable/bg_corner_circle" />
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:gravity="center"
+            android:text="50"
+            android:textColor="@color/font_color_default"
+            android:textSize="@dimen/text_size_18"
+            android:background="@drawable/bg_corner_circle" />
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:gravity="center"
+            android:text="50"
+            android:textColor="@color/font_color_default"
+            android:textSize="@dimen/text_size_18"
+            android:background="@drawable/bg_corner_circle" />
+        <TextView
+            android:id="@+id/tv_5"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:gravity="center"
+            android:text="50"
+            android:textColor="@color/font_color_default"
+            android:textSize="@dimen/text_size_18"
+            android:background="@drawable/bg_corner_circle" />
+
+    </RelativeLayout>
+</layout>

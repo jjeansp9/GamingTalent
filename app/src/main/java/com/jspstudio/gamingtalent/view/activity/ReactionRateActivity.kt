@@ -11,13 +11,13 @@ import com.jspstudio.gamingtalent.R
 import com.jspstudio.gamingtalent.base.BaseActivity
 import com.jspstudio.gamingtalent.databinding.ActivityReactionRateBinding
 import com.jspstudio.gamingtalent.util.LogMgr
-import com.jspstudio.gamingtalent.viewmodel.ReactionRateViewModel
+import com.jspstudio.gamingtalent.viewmodel.GameViewModel
 
 class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.activity_reaction_rate){
 
     private val TAG = "ReactionRateActivity"
 
-    private val viewModel: ReactionRateViewModel by viewModels()
+    private val viewModel: GameViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
