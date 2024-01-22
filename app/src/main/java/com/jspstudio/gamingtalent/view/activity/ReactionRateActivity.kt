@@ -48,7 +48,7 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
                         }
                     }
                 }
-            }
+            }//ss
             return@OnTouchListener true
         })
 
