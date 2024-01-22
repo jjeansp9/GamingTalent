@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.view.MotionEvent
 import android.view.View
 import android.view.View.OnTouchListener
+import android.widget.TextView
 import androidx.activity.viewModels
 import com.jspstudio.gamingtalent.R
 import com.jspstudio.gamingtalent.base.BaseActivity
@@ -48,7 +49,7 @@ class ReactionRateActivity : BaseActivity<ActivityReactionRateBinding>(R.layout.
                         }
                     }
                 }
-            }//ss
+            }
             return@OnTouchListener true
         })
 

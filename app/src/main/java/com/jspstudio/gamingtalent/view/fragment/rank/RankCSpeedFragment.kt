@@ -1,4 +1,4 @@
-package com.jspstudio.gamingtalent.view.fragment
+package com.jspstudio.gamingtalent.view.fragment.rank
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,7 +10,7 @@ import com.jspstudio.gamingtalent.R
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class CommunityFragment : Fragment() {
+class RankCSpeedFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
@@ -26,13 +26,14 @@ class CommunityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_community, container, false)
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_rank_c_speed, container, false)
     }
 
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            CommunityFragment().apply {
+            RankCSpeedFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
