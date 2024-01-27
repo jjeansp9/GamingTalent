@@ -33,14 +33,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     replaceFragment(RankFragment())
                     true
                 }
-                R.id.community -> {
-                    replaceFragment(CommunityFragment())
-                    true
-                }
-                R.id.setting -> {
-                    replaceFragment(SettingFragment())
-                    true
-                }
+//                R.id.community -> {
+//                    replaceFragment(CommunityFragment())
+//                    true
+//                }
+//                R.id.setting -> {
+//                    replaceFragment(SettingFragment())
+//                    true
+//                }
                 else -> false
             }
         }
