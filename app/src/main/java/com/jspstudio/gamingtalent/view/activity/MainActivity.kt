@@ -48,6 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         // 기본적으로 첫 번째 탭 선택
         binding.bnv.selectedItemId = R.id.talent_test
     }
+    // TODO : 일단 화면 간단하게 만들기
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
