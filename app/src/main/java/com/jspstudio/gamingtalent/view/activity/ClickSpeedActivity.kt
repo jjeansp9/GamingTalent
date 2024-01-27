@@ -68,7 +68,7 @@ class ClickSpeedActivity : BaseActivity<ActivityClickSpeedBinding>(R.layout.acti
                     LogMgr.e(TAG, "num: " + num)
                     if (textView == binding.tv5) {
                         CustomToast(this, binding.tvTimer.text.toString())
-                        // todo 마지막 아이템 클릭시 이부분이 실행. 추후 스코어 점수 기능 구현하기 (순위 등)
+                        // todo 마지막 아이템 클릭시 이부분이 실행. 추후 스코어 점수 기능 구현하기 (순위 등).
                     }
                 }
             }
@@ -93,11 +93,11 @@ class ClickSpeedActivity : BaseActivity<ActivityClickSpeedBinding>(R.layout.acti
 
     // 시작 시간
     private var startTime = 0L
-
+    var countDownTimer : CountDownTimer? = null
     // 카운트다운 타이머를 시작합니다.
     private fun startCountUp() {
         // 타이머 객체를 생성합니다.
-        object : CountDownTimer(Long.MAX_VALUE, 10) {
+        countDownTimer = object : CountDownTimer(Long.MAX_VALUE, 10) {
             override fun onTick(millisUntilFinished: Long) {
 
                 // 현재 시간을 가져옵니다.
@@ -121,13 +121,20 @@ class ClickSpeedActivity : BaseActivity<ActivityClickSpeedBinding>(R.layout.acti
                 // 경과 시간을 밀리초 단위로 나머지 값을 가져옵니다.
                 val remainingMilliseconds = String.format("%02d", elapsedTime % 1000).substring(0, 2)
 
+                if (num == 0) {
+                    if (countDownTimer != null) {
+                        countDownTimer?.cancel()
+                        binding.tvTimer.visibility = View.GONE
+                    }
+                }
                 // 경과 시간을 출력합니다.
                 binding.tvTimer.text = "$elapsedMinutes:$remainingSeconds:$remainingMilliseconds"
             }
 
             override fun onFinish() {
             }
-        }.start()
+        }
+        countDownTimer?.start()
 
         // 타이머를 시작합니다.
         startTime = System.currentTimeMillis()

@@ -17,58 +17,66 @@
             android:id="@+id/tv_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:text=""
             android:textColor="@color/font_color_default"
             android:textSize="@dimen/text_size_24"
             android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/tv_1"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:gravity="center"
-            android:text="50"
-            android:textColor="@color/font_color_default"
-            android:textSize="@dimen/text_size_18"
-            android:background="@drawable/bg_corner_circle" />
-        <TextView
-            android:id="@+id/tv_2"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:gravity="center"
-            android:text="49"
-            android:textColor="@color/font_color_default"
-            android:textSize="@dimen/text_size_18"
-            android:background="@drawable/bg_corner_circle" />
-        <TextView
-            android:id="@+id/tv_3"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:gravity="center"
-            android:text="48"
-            android:textColor="@color/font_color_default"
-            android:textSize="@dimen/text_size_18"
-            android:background="@drawable/bg_corner_circle" />
-        <TextView
-            android:id="@+id/tv_4"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:gravity="center"
-            android:text="47"
-            android:textColor="@color/font_color_default"
-            android:textSize="@dimen/text_size_18"
-            android:background="@drawable/bg_corner_circle" />
-        <TextView
-            android:id="@+id/tv_5"
-            android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:gravity="center"
-            android:text="46"
-            android:textColor="@color/font_color_default"
-            android:textSize="@dimen/text_size_18"
-            android:background="@drawable/bg_corner_circle" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/tv_timer">
+
+            <TextView
+                android:id="@+id/tv_1"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:text="50"
+                android:textColor="@color/font_color_default"
+                android:textSize="@dimen/text_size_18"
+                android:background="@drawable/bg_corner_circle" />
+            <TextView
+                android:id="@+id/tv_2"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:text="49"
+                android:textColor="@color/font_color_default"
+                android:textSize="@dimen/text_size_18"
+                android:background="@drawable/bg_corner_circle" />
+            <TextView
+                android:id="@+id/tv_3"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:text="48"
+                android:textColor="@color/font_color_default"
+                android:textSize="@dimen/text_size_18"
+                android:background="@drawable/bg_corner_circle" />
+            <TextView
+                android:id="@+id/tv_4"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:text="47"
+                android:textColor="@color/font_color_default"
+                android:textSize="@dimen/text_size_18"
+                android:background="@drawable/bg_corner_circle" />
+            <TextView
+                android:id="@+id/tv_5"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:gravity="center"
+                android:text="46"
+                android:textColor="@color/font_color_default"
+                android:textSize="@dimen/text_size_18"
+                android:background="@drawable/bg_corner_circle" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 </layout>
